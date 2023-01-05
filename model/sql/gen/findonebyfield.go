@@ -31,7 +31,7 @@ func genFindOneByField(table Table, withCache, postgreSql bool) (*findOneCode, e
 		output, err := t.Execute(map[string]interface{}{
 			"upperStartCamelObject":     camelTableName,
 			"upperField":                key.FieldNameJoin.Camel().With("").Source(),
-			"lowerField":                key.FieldNameJoin.Camel().With("").Lower(),
+			"lowerField":                util.EscapeGolangKeyword(key.FieldNameJoin.Camel().With("").Untitle()),
 			"UpperField":                toSchemaName(key.FieldNameJoin.Camel().With("").Source()),
 			"in":                        in,
 			"withCache":                 withCache,
