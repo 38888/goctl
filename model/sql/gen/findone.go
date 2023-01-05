@@ -53,7 +53,8 @@ func genIF(table Table) string {
 
 	tableName := stringx.From(camel).Untitle()
 	tableQb := stringx.From(camel).Untitle() + "Qb"
-	ifFields := fmt.Sprintf("%s := %s.WithContext(ctx)\n", tableQb, tableName)
+	//ifFields := fmt.Sprintf("%s := %s.WithContext(ctx)\n", tableQb, tableName)
+	ifFields := ""
 
 	for _, field := range fields {
 		name := toSchemaName(field.Name.Source())
