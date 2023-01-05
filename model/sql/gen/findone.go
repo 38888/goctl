@@ -41,7 +41,7 @@ func CheckDataType(s string) string {
 		return ` != ""`
 	}
 
-	if s == "time.Time" {
+	if s == "time.Time" || s == "sql.NullTime" {
 		return `.IsZero() == false`
 	}
 
