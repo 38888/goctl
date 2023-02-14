@@ -33,12 +33,15 @@ func toSchemaName(name string) string {
 
 // CheckDataType 检测类型
 func CheckDataType(s string) string {
-	if s == "int64" || s == "int32" || s == "int" {
+	if s == "int64" || s == "int32" || s == "int" || s == "sql.NullInt64" || s == "sql.NullInt32" || s == "sql.NullInt16" || s == "sql.NullFloat64" {
 		return " != 0"
 	}
 
-	if s == "string" {
+	if s == "string" || s == "sql.NullString" {
 		return ` != ""`
+	}
+	if s == "bool" || s == "sql.NullBool" {
+		return ""
 	}
 
 	if s == "time.Time" || s == "sql.NullTime" {
